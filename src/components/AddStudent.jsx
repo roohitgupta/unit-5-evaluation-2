@@ -1,8 +1,42 @@
+import { useState } from "react";
 import "../App.css"
 
 
 
 export const AddStudent = () => {
+
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+
+
+  const [userRegistration, setUserRegistration] = useState({
+    Firstname: "",
+    Lastname: "",
+    Email: "",
+    Age: "",
+    Tenth: "",
+    Twelth: "",
+
+  });
+
+  const handleInput = (event)=> {
+      const name = event.target.name;
+      const value = event.target.value;
+      console.log(name, value);
+
+      setUserRegistration({...userRegistration, [name]: value });
+
+  };
+
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log(userRegistration)
+  
+  };
+
+
+
 
   return (
     <form className="addstudent">
@@ -13,6 +47,9 @@ export const AddStudent = () => {
           name="first_name"
           className="first_name"
           placeholder="enter first name"
+          value={userRegistration.name}
+          onChange={handleInput}
+          
         />
       </div>
       <div>
@@ -23,6 +60,9 @@ export const AddStudent = () => {
           name="last_name"
           className="last_name"
           placeholder="enter last name"
+          value={userRegistration.name}
+          onChange={handleInput}
+          
         />
       </div>
       <div>
@@ -33,6 +73,9 @@ export const AddStudent = () => {
           name="email"
           className="email"
           placeholder="enter email"
+          value={userRegistration.name}
+          onChange={handleInput}
+         
         />
       </div>
 
@@ -62,6 +105,9 @@ export const AddStudent = () => {
           name="age"
           className="age"
           placeholder="enter age"
+          value={userRegistration.name}
+          onChange={handleInput}
+          
         />
       </div>
       <div>
@@ -71,6 +117,9 @@ export const AddStudent = () => {
           name="tenth_score"
           className="tenth_score"
           placeholder="enter 10th score"
+          value={userRegistration.name}
+          onChange={handleInput}
+          
         />{" "}
       </div>
       <div>
@@ -80,6 +129,9 @@ export const AddStudent = () => {
           name="twelth_score"
           className="twelth_score"
           placeholder="enter 12th score"
+          value={userRegistration.name}
+          onChange={handleInput}
+         
         />{" "}
       </div>
       <div>
@@ -97,7 +149,7 @@ export const AddStudent = () => {
         </select>
       </div>
 
-      <input className="submit" type="submit" value="Submit" />
+      <input className="submit" type="submit" value="Submit" onClick={handleSubmit}/>
       {
         // <div className="error"></div>
         // show this div with proper error before submitting form, if there's anything not provided
